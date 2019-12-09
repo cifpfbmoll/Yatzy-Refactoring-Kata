@@ -107,8 +107,8 @@ class Yatzy:
         if lista == []:
             return 0
         else:
-            lista.sort()
             if len(lista) >= 2:
+                lista.sort()
                 total = (lista[-1] * 2) + (lista[-2] * 2)    
                 return total
             else:
