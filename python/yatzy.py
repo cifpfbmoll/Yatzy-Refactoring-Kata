@@ -96,9 +96,9 @@ class Yatzy:
     @staticmethod
     def two_pair(*dices):
         lista = []
-        
+        PAR = 2
         for dice in dices:
-            if dices.count(dice) > 1:
+            if dices.count(dice) >= PAR:
                 if lista.count(dice) == 0:
                     lista.append(dice)
                 else:
@@ -107,7 +107,7 @@ class Yatzy:
         if lista == []:
             return 0
         else:
-            if len(lista) >= 2:
+            if len(lista) >= PAR:
                 lista.sort()
                 total = (lista[-1] * 2) + (lista[-2] * 2)    
                 return total
