@@ -150,7 +150,7 @@ class Yatzy:
             return 0
         else:
             lista.sort()
-            total = (lista[-1] * TRIO)
+            total = (lista[-1] * TRIO)            
             return total
     
 
@@ -189,34 +189,18 @@ class Yatzy:
     
 
     @staticmethod
-    def fullHouse( d1,  d2,  d3,  d4,  d5):
-        tallies = []
-        _2 = False
-        i = 0
-        _2_at = 0
-        _3 = False
-        _3_at = 0
-
-        tallies = [0]*6
-        tallies[d1-1] += 1
-        tallies[d2-1] += 1
-        tallies[d3-1] += 1
-        tallies[d4-1] += 1
-        tallies[d5-1] += 1
-
-        for i in range(6):
-            if (tallies[i] == 2): 
-                _2 = True
-                _2_at = i+1
-            
-
-        for i in range(6):
-            if (tallies[i] == 3): 
-                _3 = True
-                _3_at = i+1
-            
-
-        if (_2 and _3):
-            return _2_at * 2 + _3_at * 3
+    def fullHouse(*dices):
+        if Yatzy.one_pair(*dices) and Yatzy.three_of_a_kind(*dices):
+            total = Yatzy.three_of_a_kind(*dices) + Yatzy.one_pair(*dices)
+            return total
         else:
             return 0
+
+    @staticmethod
+    def one_pair(*dices):
+        PAR = 2
+        for dice in dices:
+            if dices.count(dice) == PAR:
+                total = dice * PAR
+                return total
+
